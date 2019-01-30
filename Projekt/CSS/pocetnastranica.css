@@ -1,0 +1,86 @@
+.header {  
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    overflow: hidden;
+    
+}
+.header > div.side {
+	flex: 25%;
+}
+.header > div.middle {
+	flex: 50%;
+}
+.login {
+	display: inline-block;
+	margin:0px 0px 2px 0px;
+	border:1px #333 solid;   
+	padding:10px 50px;
+	background-color: #fc283f;
+	-webkit-border-radius:40px;
+	-moz-border-radius:40px;
+	border-radius:40px;
+	font-size: 34px;
+	letter-spacing: 3.5px;
+}
+.login:hover{
+	background-color: #95d712; 
+	border-radius:10px;
+	box-shadow:0px 0px 10px #555;
+}
+
+.menu {
+	display: flex;
+    flex-wrap: nowrap;wrap;
+    flex-direction: row;
+    overflow: hidden;
+
+}
+.menu > div.side {
+	flex: 25%;
+}
+.menu > div.middle {
+	flex: 50%;
+}
+.gumb {
+	display: inline-block;
+	margin:20px 0px 20px 0px;
+	border:1px #333 solid;   
+	padding:20px 100px;
+	background-color: #ffa1c3;
+	-webkit-border-radius:40px;
+	-moz-border-radius:40px;
+	border-radius:40px;
+	font-size: 68px;
+	letter-spacing: 7px;
+
+}
+.gumb:hover{
+	background-color: #95d712; 
+	border-radius:10px;
+	box-shadow:0px 0px 10px #555;
+}
+.footer{
+    text-align: center;
+    overflow: hidden;
+}
+a:link{
+	text-decoration: none;
+	color: black;
+}
+a:visited{
+	text-decoration: none;
+	color:
+	black;
+}
+a:active{
+	color: red;
+}
+@media screen and (max-width: 700px) {
+    .header{   
+        flex-direction: column-reverse;
+    }
+    .menu{   
+        flex-direction: column;
+    }
+}

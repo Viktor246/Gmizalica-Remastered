@@ -1,0 +1,141 @@
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar a {
+    float: left;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a.right {
+    float: right;
+}
+.active {
+    background-color: #4CAF50;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.gumb {
+	border:1px #333 solid;   
+	padding:5px 25px;
+	background-color: #ffa1c3;
+	-webkit-border-radius:40px;
+	-moz-border-radius:40px;
+	border-radius:40px;
+	font-size: 17px;
+	letter-spacing: 7px;
+
+}
+.gumb:hover{
+	background-color: #95d712; 
+	border-radius:10px;
+	box-shadow:0px 0px 10px #555;
+}
+
+.header {  
+    display: flex;
+    flex-wrap: no-wrap;
+    flex-direction: row;
+    overflow: hidden;
+    margin: 10% 0px 0px 5%;
+}
+.header > div.left{
+	flex: 50%;
+	
+}
+.header > div.rest{
+	flex:25%;
+	align-items: center;
+}
+.header_r {  
+    display: flex;
+    flex-wrap: no-wrap;
+    flex-direction: row;
+    overflow: hidden;
+    margin: 10% 0px 0px 5%;
+}
+.header_r > div.left{
+	flex: 50%;
+	
+}
+.header_r > div.rest{
+	flex:25%;
+	align-items: center;
+}
+.dabar {
+    width: 400px;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid pink;
+    border-radius: 4px;
+	font-size: 17px;
+}
+.tablediv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow: hidden;
+    margin: 0px 0px 0px 10%;
+}
+.tablediv > div {
+    flex: 100%;
+}
+.linkovi {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+.friends {
+    border-collapse: collapse;
+    width: 50%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: cyan;
+    color: black;
+}
+tr:hover {
+    background-color: #abcdef;
+}
+@media screen and (max-width: 500px) {
+    .navbar a {
+        float: none;
+        width: 100%;
+        text-align:center;
+        padding: 14px 0px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .header{
+        flex-direction: column;
+    }
+    .header_r{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 440px) {
+    .header{
+        flex-direction: column;
+    }
+    .header_r{
+        flex-direction: column;
+    }
+    .dabar{
+        width: 100%;
+    }
+}
