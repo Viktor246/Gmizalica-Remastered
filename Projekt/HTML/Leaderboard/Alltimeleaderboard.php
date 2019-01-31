@@ -49,7 +49,7 @@ $query_row = mysqli_fetch_array($query);
 					} else {
   						$startrow = (int)$_GET['startrow'];
 					}
-					$result = mysqli_query($db,"SELECT hs, hs_t, username FROM leaderboard, player WHERE (leaderboard.userID = player.userID) ORDER BY hs DESC , hs_t LIMIT $startrow, 2");
+					$result = mysqli_query($db,"SELECT hs, hs_t, username FROM leaderboard, player WHERE (leaderboard.userID = player.userID) ORDER BY hs DESC , hs_t LIMIT $startrow, 5");
 					$num=Mysqli_num_rows($result);
 					if($num>0) {
 				        echo "<table class='leaderboard'>
@@ -77,8 +77,8 @@ $query_row = mysqli_fetch_array($query);
 						}
 						echo "</table>";
 					}
-					echo '<a href="'.$_SERVER['PHP_SELF'].'?startrow='.($startrow+2).'&position='.($startrow+3).'">Next</a>';
-					$prev = $startrow - 2;
+					echo '<a href="'.$_SERVER['PHP_SELF'].'?startrow='.($startrow+5).'&position='.($startrow+6).'">Next</a>';
+					$prev = $startrow - 5;
 					if ($prev >= 0){
     					echo '<a href="'.$_SERVER['PHP_SELF'].'?startrow='.$prev.'&position='.($prev+1).'">Previous</a>';
 					}

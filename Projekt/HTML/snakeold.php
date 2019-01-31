@@ -3,30 +3,6 @@ session_start();
 if (!isset($_SESSION["ID"])) {
   header('Location: Login_Register/register.php');
 }
-  
-  include "baza.php";
-
-	$db = new mysqli($servername, $dbusername, $dbpass, $dbname);
-	$id = $_SESSION["ID"];
-	$sql = "SELECT * FROM player WHERE userID = '$id'";
-	$player = mysqli_query($db, $sql);
-	$row = mysqli_fetch_assoc($player);
-
-
-  $nesto = $row["bckg_seting"];
-  $sql2 = "SELECT * FROM bckg_clr WHERE bckgID = '$nesto'";
-  $player2 = mysqli_query($db, $sql2);
-  $row2 = mysqli_fetch_assoc($player2);
-  $backcol = $row2["bckg_color"];
-
-  $nesto1 = $row["snake_seting"];
-  $sql1 = "SELECT * FROM snake_clr WHERE snakeclrID = '$nesto1'";
-  $player1 = mysqli_query($db, $sql1);
-  $row1 = mysqli_fetch_assoc($player1);
-  $snakecol = $row1["snake_color"];
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -41,9 +17,7 @@ if (!isset($_SESSION["ID"])) {
     margin: 0;
   }
   body {
-    background: #<?php
-		echo $backcol;
-	?>;
+    background: black;
 	display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -53,9 +27,7 @@ if (!isset($_SESSION["ID"])) {
 
   }
   canvas {
-    border: 1px solid <?php
-  echo "#" . $snakecol;
-  ?>;
+    border: 1px solid white;
   }
   
   
@@ -74,10 +46,9 @@ if (!isset($_SESSION["ID"])) {
   }
   </style>
 </head>
-
-<body>
+<body onload="start_time();">
 <div class = "score">
-<p id="scorevalue" style="color:#<?php echo $snakecol;?>;"></p>
+<p id="scorevalue"></p>
 <audio controls autoplay loop hidden>
   <source src="snake_song.mp3" type="audio/ogg">
   <embed src="snake_song.mp3" autostart="true" loop="true" hidden="true"> 
@@ -88,7 +59,7 @@ if (!isset($_SESSION["ID"])) {
 <div class = "gamediv">
 <canvas width="560" height="560" id="game"></canvas></div>
 <script>
-var startTime = new Date();
+
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 var grid = 16;
@@ -114,19 +85,17 @@ var apple = {
   x: 320,
   y: 320
 };
-var endTime;
+var startTime, endTime;
 
-
+function start_time() {
+  startTime = new Date();
+};
 
 function end_time() {
   endTime = new Date();
-  console.log(startTime + " nesto1");
-  console.log(endTime + " nesto2");
   var timeDiff = endTime - startTime; //in ms
-  console.log(timeDiff + " nesto3");
   // strip the ms
   timeDiff /= 1000;
-  console.log(timeDiff + " nesto4");
 
   // get seconds 
   seconds = Math.round(timeDiff);
@@ -181,14 +150,10 @@ function loop() {
     snake.cells.pop();
   }
   // draw apple
-  context.fillStyle = <?php
-  echo "'#" . $snakecol . "'";
-  ?>;
+  context.fillStyle = 'red';
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
   // draw snake one cell at a time
-  context.fillStyle = <?php
-  echo "'#" . $snakecol . "'";
-	?>;
+  context.fillStyle = 'green';
   snake.cells.forEach(function(cell, index) {
     
     // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
@@ -240,7 +205,7 @@ function loop() {
     			apple.y = getRandomInt(0, 25) * grid;
     			score = 0;
     			document.getElementById("scorevalue").innerHTML = "SCORE: " + score;
-    			startTime = new Date();
+    			start_time();
     		} else{
       		  window.location.href = "pocetna_login.php";
       		}

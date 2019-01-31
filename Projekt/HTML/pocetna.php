@@ -1,8 +1,16 @@
 <?php
+	include "baza.php";
+	$db = new mysqli($servername, $dbusername, $dbpass, $dbname);
 	session_start();
-	echo $_SESSION["ID"] . "prvi put";
-	session_destroy();
-	echo $_SESSION["ID"] . "drugi put";
+	
+	if (!isset($_SESSION["ID"])) {
+
+	}else{
+		$vrijeme = time();
+   		$insert = "UPDATE login_log SET logout_time = '$vrijeme' WHERE loginID = '".$_SESSION["loginID"]."'";
+   		mysqli_query($db, $insert);
+   		session_destroy();
+	}
 	?>
 
 <html>
